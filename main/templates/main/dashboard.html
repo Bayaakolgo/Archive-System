@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 bg-light d-none d-md-block sidebar">
+            <div class="left-sidebar">
+                <ul class="nav flex-column sidebar-nav">
+                    <li class="nav-item">
+                        {% include 'main/include/messages.html' %}
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="{% url 'upload' %}">
+                        Upload File
+                      </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <main role="main" class="col-md-4 ml-sm-auto col-lg-10 px-4">
+            <h3>Archive Files</h3>
+            <hr>
+            <div class="row">
+                {% for uploads in uploads %}
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ uploads.name }}{{ uploads.extension }}</h5>
+                                <p class="card-text">{{ uploads.filesize }}</p>
+                                <p class="card-text">{{ uploads.date }}</p>
+                                <a href="{% url 'download' uploads.id %}" class="btn btn-primary">Download</a>
+                                <a href="{% url 'delete' uploads.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+        </main>
+    </div>
+</div>
+
+{% endblock content %}

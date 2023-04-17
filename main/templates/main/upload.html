@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <br>
+
+  <div class="container">
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="card mx-auto">
+        <div class="card-header">
+          Upload a File
+        </div>
+        <div class="card-body">
+          {{ form.name|as_crispy_field }}
+          <p class="card-text">Files Supported: .docx, .pdf, .txt, .doc</p>
+          {{ form.file|as_crispy_field }}
+        </div>
+        <div class="card-footer text-body-secondary card text-center">
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+      </div>
+    </form>
+    <p class="text-center"><a href="{% url 'dashboard' %}">Return to dashboard</a></p>
+  </div>
+{% endblock %}
