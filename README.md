@@ -15,5 +15,14 @@ In the repo directory, create a virtual environment `python3 -m venv venv`
 On Windows CMD: `venv\Scripts\activate`
 On Windows mac: `source <venv>/bin/activate`
 
-Install the needed dependencies from the requirements.txt file
+### Install django in the virtual environment
+`pip install django`
+
+### Install the needed dependencies from the requirements.txt file
 `pip install -r requirements.txt`
+
+### Make migrations
+`python manage.py migrate`
+
+### Lunch the project
+`python manage.py runserver`
