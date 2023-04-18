@@ -22,11 +22,9 @@ On Windows mac: `source <venv>/bin/activate`
 `pip install -r requirements.txt`
 
 ### Make migrations
+`python manage.py makemigrations`
 `python manage.py migrate`
 
 ### Lunch the project
 `python manage.py runserver`
-
-
-https://user-images.githubusercontent.com/84840626/232586566-f088db7d-a541-472a-8655-3700b146f71b.mp4
 
